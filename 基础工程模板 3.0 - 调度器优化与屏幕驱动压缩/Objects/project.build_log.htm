@@ -1,0 +1,62 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.43.1.0
+Copyright (C) 2025 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 3536612143@qq.com, 1, LIC=32B1Q-NL8S0-FWA2N-YVKSE-ATN5L-G33CX
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.43.0.0
+Toolchain Path:  D:\keil_5\core\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.43.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      CMSIS_AGDI.dll V1.33.24.0
+Dialog DLL:      TCM.DLL V1.56.6.0
+ 
+<h2>Project:</h2>
+e:\公司资料\个人资料\字模生成工具\基础工程模板 3.0 - 调度器优化与屏幕驱动压缩\project.uvprojx
+Project File Date:  01/24/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\keil_5\core\ARM\ARMCC\Bin'
+Build target 'Target 1'
+compiling OLED_Data.c...
+HardWare\OLED_Data.c(383): warning:  #1-D: last line of file ends without a newline
+  };
+HardWare\OLED_Data.c: 1 warning, 0 errors
+compiling main.c...
+compiling OLED.c...
+HardWare\OLED.c(19): warning:  #177-D: variable "OLED_GRAM2"  was declared but never referenced
+  static uint8_t OLED_GRAM2[OLED_PAGE_COUNT][OLED_COLUMN_COUNT] = {0};
+HardWare\OLED.c(33): warning:  #177-D: variable "active_buffer"  was declared but never referenced
+  static BufferSelect active_buffer = BUFFER_A;    // 褰撳墠缁樺埗缂撳啿鍖?
+HardWare\OLED.c(34): warning:  #177-D: variable "display_buffer"  was declared but never referenced
+  static BufferSelect display_buffer = BUFFER_A;   // 褰撳墠鏄剧ず缂撳啿鍖?
+HardWare\OLED.c: 3 warnings, 0 errors
+linking...
+Program Size: Code=3924 RO-data=3072 RW-data=52 ZI-data=6804  
+FromELF: creating hex file...
+".\Objects\project.axf" - 0 Error(s), 4 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.1.pack
+                Keil::STM32F1xx_DFP@2.4.1
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  D:/keil_5/Pack/Keil/STM32F1xx_DFP/2.4.1/Device/Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
