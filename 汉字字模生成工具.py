@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-自动OLED汉字字模生成工具
+ChiMatrix OLED
+版本: 1.2.1
+版本说明:
+    1（大版本）: 较大幅度修改，功能的添加移除
+    2（小版本）: 较严重的bug修复
+    1（小版本发布版本）: 主要是修复bug
 功能:自动检索工程中User和HardWare文件夹下所有文件中的OLED_Printf函数中的中文，
      生成对应的字模数据，并替换到OLED_Data.c文件的中文字库中
 """
@@ -18,7 +23,15 @@ ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
 
 # 配置文件相关常量
 CONFIG_FILE_NAME = "config.json"  # 配置文件名
-CONFIG_FILE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), CONFIG_FILE_NAME)  # 配置文件路径
+
+# 确定配置文件路径，支持PyInstaller打包
+import sys
+if getattr(sys, 'frozen', False):
+    # PyInstaller打包环境
+    CONFIG_FILE_PATH = os.path.join(os.path.dirname(sys.executable), CONFIG_FILE_NAME)
+else:
+    # 普通Python环境
+    CONFIG_FILE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), CONFIG_FILE_NAME)
 
 # 默认配置
 DEFAULT_FONT_NAME = "SimHei"  # 默认字体名称
@@ -424,7 +437,7 @@ class ConfigWindow:
     def __init__(self, root, config):
         self.root = root
         self.config = config
-        self.root.title("OLED字模生成工具")
+        self.root.title("ChiMatrix OLED 1.2.1")
         
         # 设置更大的初始窗口尺寸和最小尺寸
         self.root.geometry("650x640")
@@ -441,6 +454,9 @@ class ConfigWindow:
         # 初始化配置
         self.config = GeneratorConfig()
         self.error_occurred = False
+
+        # 创建全局项目路径变量，供所有标签页使用
+        self.project_path_var = tk.StringVar(value=self.config.last_project_path)
 
         # 设置现代主题
         self.style = ttk.Style()
@@ -459,7 +475,7 @@ class ConfigWindow:
         main_frame.columnconfigure(0, weight=1)
         
         # 顶部标题栏
-        # title_label = ttk.Label(main_frame, text="OLED字模生成工具", font=("SimHei", 14, "bold"), padding=10)
+        # title_label = ttk.Label(main_frame, text="ChiMatrix OLED", font=("SimHei", 14, "bold"), padding=10)
         # title_label.grid(row=0, column=0, sticky=tk.NSEW, pady=(0, 10))
         
         # 创建选项卡控件
@@ -509,7 +525,6 @@ class ConfigWindow:
         project_frame.columnconfigure(1, weight=1)
 
         ttk.Label(project_frame, text="工程路径:").grid(row=0, column=0, sticky=tk.W, pady=5)
-        self.project_path_var = tk.StringVar(value=self.config.last_project_path)
         project_entry = ttk.Entry(project_frame, textvariable=self.project_path_var, width=30)
         project_entry.grid(row=0, column=1, sticky=tk.EW, pady=5, padx=(5, 5))
         ttk.Button(project_frame, text="浏览...", command=self.browse_project_dir).grid(row=0, column=2, padx=5, pady=5)
@@ -645,7 +660,6 @@ class ConfigWindow:
         project_frame.columnconfigure(1, weight=1)
         
         ttk.Label(project_frame, text="工程路径:").grid(row=0, column=0, sticky=tk.W, pady=2)
-        self.project_path_var = tk.StringVar(value=self.config.last_project_path)
         project_entry = ttk.Entry(project_frame, textvariable=self.project_path_var)
         project_entry.grid(row=0, column=1, sticky=tk.EW, pady=2, padx=(5, 5))
         ttk.Button(project_frame, text="浏览...", command=self.browse_project_dir, width=8).grid(row=0, column=2, padx=2, pady=2)

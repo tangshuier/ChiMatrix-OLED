@@ -4,9 +4,9 @@
     "mode": "列行式",
     "code_type": "阳码",
     "bit_order": "低位在前",
-    "last_project_path": "E:/公司资料/个人资料/字模生成工具/基础工程模板 3.0 - 调度器优化与屏幕驱动压缩",
-    "input_chars": "琉璃",
-    "generate_mode": "仅使用手动输入的汉字",
+    "last_project_path": ".",
+    "input_chars": "",
+    "generate_mode": "仅搜索代码中的汉字",
     "clear_existing": false,
     "duplicate_handle": "覆盖",
     "remember_choice": false
